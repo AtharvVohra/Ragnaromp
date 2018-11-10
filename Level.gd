@@ -1,11 +1,16 @@
 extends Node2D
 
-onready var width = get_viewport().size.x
-onready var height = get_viewport().size.y
+var player_lane
 
 func _ready():
 	print(width)
 	print(height)
+	
+	# Create lanes
+	player_lane = lanes[1]
+	
+	# Place player on the middle
+	
 	
 func _update():
 	pass

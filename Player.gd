@@ -1,10 +1,8 @@
-extends Node
+extends Node2D
 
-onready var width = get_viewport().size.x
-onready var height = get_viewport().size.y
-
-# Later we should calculate the lane y-coords based on window height
-onready var lanes = [100, 200, 300]
+# class member variables go here, for example:
+# var a = 2
+# var b = "textvar"
 
 func _ready():
 	# Called when the node is added to the scene for the first time.
