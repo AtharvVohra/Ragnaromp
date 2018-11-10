@@ -1,22 +1,24 @@
 extends Node2D
 
+onready var player = get_node("Player")
 var player_lane
 
 func _ready():
-	print(width)
-	print(height)
-	
-	# Create lanes
-	player_lane = lanes[1]
+	print(globals.width)
+	print(globals.height)
 	
 	# Place player on the middle
-	
-	
-func _update():
-	pass
+	# lanes array is a global singleton
+	player_lane = 1
+	print(player_lane)
+	player.position.y = globals.lanes[player_lane]
+	print(player.position.y)
+	player.show()
 	
 func _process():
-	pass
+	# Set objects' coords to their lane
+	player.position.y = player_lane
+	
 	
 func _physics_process(delta):
 	pass
