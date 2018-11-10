@@ -18,6 +18,12 @@ config/icon="res://icon.png"
 
 globals="*res://globals.gd"
 
+[display]
+
+window/size/width=640
+window/size/height=360
+window/size/resizable=false
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"
