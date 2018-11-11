@@ -67,7 +67,13 @@ func _ready():
 	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer*2, 2)
 	quilt.add_child(pattern)
 	quilt.patterns.append(pattern)
-
+	
+	pattern = PatternScene.instance()
+	add_stitch_to_pattern(pattern, globals.DRAUGR, 0, 2)
+	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer, 2)
+	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer*2, 2)
+	quilt.add_child(pattern)
+	quilt.patterns.append(pattern)
 	
 	get_node("Honor").set_text(String(globals.playerHonor))
 	

@@ -10,7 +10,7 @@
 
 custom_solver_bias = 0.0
 radius = 20.0
-height = 55.0
+height = 50.0
 
 [sub_resource type="Animation" id=2]
 

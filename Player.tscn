@@ -7,7 +7,7 @@
 
 custom_solver_bias = 0.0
 radius = 45.0
-height = 35.0
+height = 30.0
 
 [sub_resource type="Animation" id=2]
 
@@ -28,7 +28,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6 ]
 }
 
-[node name="Player" type="StaticBody2D"]
+[node name="Player" type="StaticBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1

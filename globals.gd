@@ -8,7 +8,7 @@ onready var height = get_viewport().size.y
 # ice giants add 4 honor
 var playerHonor = 0
 var highScoreHonor = 0
-var lanes = [170, 270, 370]
+var lanes = [240, 360, 480]
 
 const DRAUGR = 0	# Used for stitches (spawning enemies)
 const GIANT  = 1
