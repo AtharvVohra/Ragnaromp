@@ -2,38 +2,33 @@ extends KinematicBody2D
 
 # class member variables go here, for example:
 var lane
-var isHit 
-var isReached 
-var xPos
+var isHit
+var movespeed = 20
 
 func _ready():
-	# Called when the node is added to the scene for the first time.
 	# randomizes draugr lane
-	lane = global.lanes[randi() % 3]
+	lane = randi() % 3
+	position.y = globals.lanes[lane]
 	isHit = false
-	isReached = false
-	pass
-
-func _process(delta):
+	
+func _physics_process(delta):
+	
+	# Movement
+	var velocity = Vector2(-1, 0)
+	move_and_slide(velocity.normalized() * movespeed)
 	
 	if(isHit):
 		# change sprite
 		# add honor points
 		# play splat sound effect
-		global.honor += 4
-		pass
+		globals.honor += 4
 	
-	if(isReached(xpos)):
+	if(isReached(position.x)):
 		# decrease honor
 		# play people screaming sound effect
-		global.honor -= 2
-		pass
-	
-	pass
+		globals.honor -= 2
+		
+		# delete the instance
 
-func _isReached(xpos):
-	if(xpos == 0):
-		return true
-	else:
-		return false
-	pass
+func isReached(xpos):
+	return position.x == 0
