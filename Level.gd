@@ -11,10 +11,11 @@ var delta_y_per_step
 var DraugrScene = load("res://Draugr.tscn")
 var PatternScene = load("res://Pattern.tscn")
 var StitchScene = load("res://Stitch.tscn")
-var last_enemy
-var can_spawn = true
 
 var create_x = globals.width + 128
+
+var last_enemy
+var can_spawn = true
 
 onready var quilt = get_node("Quilt")
 
@@ -35,22 +36,17 @@ func _ready():
 		
 	# Create patterns and add them to the Quilt
 	# Later inside _process they will be used to create enemies
-	var pattern = PatternScene.instance()
-	var stitch = StitchScene.instance()
-	stitch.enemy = globals.DRAUGR
-	stitch.xoffset = 0
-	stitch.lane = 0
-	pattern.add_child(stitch)
-	pattern.stitches.append(stitch)
+	var dbuffer = 128
+	#var fbuffer = 
+	var pattern
+	pattern = PatternScene.instance()
+	add_stitch_to_pattern(pattern, globals.DRAUGR, 0, 0)
+	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer, 1)
+	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer*2, 2)
+	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer*4, 0)
+	
 	quilt.add_child(pattern)
 	quilt.patterns.append(pattern)
-	
-	
-#	var DraugrScene = load("res://Draugr.tscn")
-#	var new_draugr = DraugrScene.instance()
-#	add_child(new_draugr)
-#	new_draugr.position.x = create_x
-	#get_node("/root/Draugr.tscn").call_deferred("add_child", new_draugr)
 	
 	get_node("Honor").set_text(String(globals.playerHonor))
 	
@@ -133,3 +129,12 @@ func _on_gametimer_timeout():
 	yield(t, "timeout")
 	t.queue_free()
 	get_tree().change_scene("res://Title.tscn")
+
+func add_stitch_to_pattern(pattern, enemy, offset, lane):
+	var stitch
+	stitch = StitchScene.instance()
+	stitch.enemy = enemy
+	stitch.xoffset = offset
+	stitch.lane = lane
+	pattern.add_child(stitch)
+	pattern.stitches.append(stitch)
