@@ -22,7 +22,7 @@ func _ready():
 	player.show()
 	
 	changing_lanes = false
-	steps_to_move = 20
+	steps_to_move = 30
 	
 func _process(delta):
 	# Input
@@ -52,11 +52,20 @@ func _process(delta):
 	if changing_lanes:
 		player.position.y += delta_y_per_step
 		print(player.position.y)
-		if (player.position.y == globals.lanes[target_lane]):
-			print("Finished changing lanes")
-			player_lane = target_lane
-			changing_lanes = false
-			
+		if (delta_y < 0):
+			# We're moving up
+			if (player.position.y <= globals.lanes[target_lane]):
+				print("Finished changing lanes")
+				player.position.y = globals.lanes[target_lane]
+				player_lane = target_lane
+				changing_lanes = false
+		if (delta_y > 0):
+			# We're moving down
+			if (player.position.y >= globals.lanes[target_lane]):
+				print("Finished changing lanes")
+				player.position.y = globals.lanes[target_lane]
+				player_lane = target_lane
+				changing_lanes = false
 
 #func _physics_process(delta):
 #	pass
