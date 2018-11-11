@@ -3,7 +3,7 @@
 [ext_resource path="res://Level.gd" type="Script" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
 
-[node name="Level" type="Node2D"]
+[node name="Level" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 
@@ -15,5 +15,7 @@ process_mode = 1
 wait_time = 60.0
 one_shot = true
 autostart = false
+
+[connection signal="timeout" from="gametimer" to="." method="_on_gametimer_timeout"]
 
 

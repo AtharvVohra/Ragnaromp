@@ -3,7 +3,7 @@ extends KinematicBody2D
 # class member variables go here, for example:
 var lane
 var isHit
-var movespeed = 50
+var movespeed = 100
 
 func _ready():
 	# randomizes draugr lane
@@ -21,14 +21,16 @@ func _physics_process(delta):
 		# change sprite
 		# add honor points
 		# play splat sound effect
-		globals.honor += 2
+		globals.playerHonor += 2000
 	
-	if(isReached(position.x)):
+	if(isReached()):
 		# decrease honor
 		# play people screaming sound effect
-		globals.honor -= 1
+		globals.playerHonor -= 1000
 		
 		# delete the instance
+		queue_free()
+		print("Draugr escaped!")
 
-func isReached(xpos):
-	return position.x == 0
+func isReached():
+	return position.x <= -get_node("Sprite").texture.get_width()

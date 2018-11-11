@@ -37,7 +37,8 @@ func _ready():
 	get_node("gametimer").start()
 	
 func _physics_process(delta):
-	# Input
+
+	# Player lane changing
 	if (!changing_lanes and Input.is_action_just_pressed('ui_up')):
 		if (player_lane > 0):
 			target_lane = player_lane - 1
@@ -60,7 +61,6 @@ func _physics_process(delta):
 			print(delta_y_per_step)
 	# Set objects' coords to their lane
 	#player.position.y = globals.lanes[player_lane]
-	
 	if changing_lanes:
 		player.position.y += delta_y_per_step
 		print(player.position.y)
@@ -81,5 +81,6 @@ func _physics_process(delta):
 				
 	print(get_node("gametimer").get_time_left())
 
-#func _physics_process(delta):
-#	pass
+func _on_gametimer_timeout():
+	get_tree().paused = true
+	print("GAME OVER")
