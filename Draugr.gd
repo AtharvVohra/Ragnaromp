@@ -1,18 +1,19 @@
 extends KinematicBody2D
 
 # class member variables go here, for example:
-var lane
+var lane = 0
 var isHit
 var movespeed = 3
 var bloodtex = preload("res://assets/blood.png")
 
 func _ready():
 	# randomizes draugr lane
-	lane = randi() % 3
-	position.y = globals.lanes[lane]
+	#lane = randi() % 3
 	isHit = false
 	
 func _physics_process(delta):
+	
+	position.y = globals.lanes[lane]
 	
 	# Movement
 	var velocity = Vector2(-1, 0)
@@ -20,7 +21,6 @@ func _physics_process(delta):
 	if collisioninfo:
 		isHit = true
 		
-	
 	if(isHit):
 		# change sprite and remove collision box
 		# add honor points

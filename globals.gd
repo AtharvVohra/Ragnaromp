@@ -10,5 +10,8 @@ var playerHonor = 0
 var highScoreHonor = 0
 var lanes = [170, 270, 370]
 
+const DRAUGR = 0	# Used for stitches (spawning enemies)
+const GIANT  = 1
+
 #func _ready():
 #	pass
