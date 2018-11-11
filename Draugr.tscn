@@ -18,7 +18,9 @@ script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
+z_index = -1
 texture = ExtResource( 2 )
+_sections_unfolded = [ "Offset", "Z Index" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
