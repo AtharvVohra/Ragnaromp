@@ -27,7 +27,9 @@ func _physics_process(delta):
 		# play splat sound effect
 		get_node("Sprite").set_texture(bloodtex)
 		get_node("CollisionShape2D").disabled = true
-		globals.playerHonor += 2000
+		globals.playerHonor += 1000
+		get_node("../Honor").set_text(String(globals.playerHonor))
+		
 	
 	if(isReached()):
 		# decrease honor

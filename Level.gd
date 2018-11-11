@@ -82,5 +82,14 @@ func _physics_process(delta):
 	print(get_node("gametimer").get_time_left())
 
 func _on_gametimer_timeout():
-	get_tree().paused = true
-	print("GAME OVER")
+	var t = Timer.new()
+	t.set_wait_time(2)
+	t.set_one_shot(true)
+	self.add_child(t)
+	t.start()
+	#get_tree().paused = true
+	get_node("GameOver").visible = true
+	print("ROMP OVER!")
+	yield(t, "timeout")
+	t.queue_free()
+	get_tree().change_scene("res://Title.tscn")
