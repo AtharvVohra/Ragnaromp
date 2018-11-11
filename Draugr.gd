@@ -10,6 +10,7 @@ func _ready():
 	# randomizes draugr lane
 	#lane = randi() % 3
 	isHit = false
+	$AnimationPlayer.play("DraugrAnim")
 	
 func _physics_process(delta):
 	
