@@ -8,9 +8,16 @@ var delta_y
 var steps_to_move
 var delta_y_per_step
 
-var create_x
+var DraugrScene = load("res://Draugr.tscn")
+var PatternScene = load("res://Pattern.tscn")
+var StitchScene = load("res://Stitch.tscn")
 
-onready var quiltref = get_parent()
+var create_x = globals.width + 128
+
+var last_enemy
+var can_spawn = true
+
+onready var quilt = get_node("Quilt")
 
 func _ready():
 	print(globals.width)
@@ -27,13 +34,20 @@ func _ready():
 	changing_lanes = false
 	steps_to_move = 30
 		
-	# Vars for spawning enemies
-	create_x = globals.width + 128
-	var DraugrScene = load("res://Draugr.tscn")
-	var new_draugr = DraugrScene.instance()
-	add_child(new_draugr)
-	new_draugr.position.x = create_x
-	#get_node("/root/Draugr.tscn").call_deferred("add_child", new_draugr)
+	# Create patterns and add them to the Quilt
+	# Later inside _process they will be used to create enemies
+	var dbuffer = 128
+	#var fbuffer = 
+	var pattern
+	pattern = PatternScene.instance()
+	add_stitch_to_pattern(pattern, globals.DRAUGR, 0, 0)
+	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer, 1)
+	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer*2, 2)
+	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer*4, 0)
+	
+	quilt.add_child(pattern)
+	quilt.patterns.append(pattern)
+	
 	get_node("Honor").set_text(String(globals.playerHonor))
 	
 	get_node("gametimer").start()
@@ -82,7 +96,24 @@ func _physics_process(delta):
 				changing_lanes = false
 	
 	# Spawn enemies based on patterns
-	#var pattern = 
+	# Pick a random pattern
+	if can_spawn:
+		var pattern = quilt.patterns[rand_range(0, quilt.patterns.size())]
+		for stitch in pattern.stitches:
+			var new_enemy
+			if (stitch.enemy == globals.DRAUGR):
+				new_enemy = DraugrScene.instance()
+				add_child(new_enemy)
+				new_enemy.position.x = create_x + stitch.xoffset
+				new_enemy.lane = stitch.lane
+				# Get the coordinate of the last 
+			if (stitch == pattern.stitches[pattern.stitches.size()-1]):
+				last_enemy = new_enemy
+		can_spawn = false
+	else:
+		# Determine when the pattern's last enemy enters the screen
+		if (last_enemy.position.x < globals.width):
+			can_spawn = true
 				
 	print(get_node("gametimer").get_time_left())
 
@@ -98,3 +129,12 @@ func _on_gametimer_timeout():
 	yield(t, "timeout")
 	t.queue_free()
 	get_tree().change_scene("res://Title.tscn")
+
+func add_stitch_to_pattern(pattern, enemy, offset, lane):
+	var stitch
+	stitch = StitchScene.instance()
+	stitch.enemy = enemy
+	stitch.xoffset = offset
+	stitch.lane = lane
+	pattern.add_child(stitch)
+	pattern.stitches.append(stitch)
