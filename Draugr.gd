@@ -11,10 +11,11 @@ func _ready():
 	#lane = randi() % 3
 	isHit = false
 	$AnimationPlayer.play("DraugrAnim")
+	$Blood.hide()
 	
 func _physics_process(delta):
 	
-	position.y = globals.lanes[lane]
+	#position.y = globals.lanes[lane]
 	
 	# Movement
 	var velocity = Vector2(-1, 0)
@@ -28,6 +29,9 @@ func _physics_process(delta):
 		# play splat sound effect
 		get_node("Sprite").set_texture(bloodtex)
 		get_node("CollisionShape2D").disabled = true
+		$AnimationPlayer.stop()
+		$Sprite.hide()
+		$Blood.show()
 		globals.playerHonor += 2000
 		updateHonor()
 		if(randi()%2 == 1):

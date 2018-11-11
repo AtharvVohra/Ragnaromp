@@ -27,12 +27,12 @@ func _ready():
 	# Place player on the middle lane
 	player_lane = 1
 	player.position.y = globals.lanes[player_lane]
-	player.position.x = 70
+	player.position.x = 175
 	player.show()
 	
 	# Vars for player lane changing
 	changing_lanes = false
-	steps_to_move = 30
+	steps_to_move = 25
 		
 	# Create patterns and add them to the Quilt
 	# Later inside _process they will be used to create enemies
@@ -44,9 +44,30 @@ func _ready():
 	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer, 1)
 	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer*2, 2)
 	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer*4, 0)
-	
 	quilt.add_child(pattern)
 	quilt.patterns.append(pattern)
+	
+	pattern = PatternScene.instance()
+	add_stitch_to_pattern(pattern, globals.DRAUGR, 0, 0)
+	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer, 0)
+	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer*2, 0)
+	quilt.add_child(pattern)
+	quilt.patterns.append(pattern)
+	
+	pattern = PatternScene.instance()
+	add_stitch_to_pattern(pattern, globals.DRAUGR, 0, 1)
+	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer, 1)
+	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer*2, 1)
+	quilt.add_child(pattern)
+	quilt.patterns.append(pattern)
+	
+	pattern = PatternScene.instance()
+	add_stitch_to_pattern(pattern, globals.DRAUGR, 0, 2)
+	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer, 2)
+	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer*2, 2)
+	quilt.add_child(pattern)
+	quilt.patterns.append(pattern)
+
 	
 	get_node("Honor").set_text(String(globals.playerHonor))
 	
@@ -108,6 +129,7 @@ func _physics_process(delta):
 				add_child(new_enemy)
 				new_enemy.position.x = create_x + stitch.xoffset
 				new_enemy.lane = stitch.lane
+				new_enemy.position.y = globals.lanes[new_enemy.lane]
 				# Get the coordinate of the last 
 			if (stitch == pattern.stitches[pattern.stitches.size()-1]):
 				last_enemy = new_enemy
