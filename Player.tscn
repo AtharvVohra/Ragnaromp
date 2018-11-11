@@ -3,11 +3,10 @@
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/thorsprite/thor.png" type="Texture" id=2]
 
-[sub_resource type="CapsuleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-radius = 45.0
-height = 30.0
+extents = Vector2( 32, 32 )
 
 [sub_resource type="Animation" id=2]
 
@@ -28,7 +27,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6 ]
 }
 
-[node name="Player" type="StaticBody2D" index="0"]
+[node name="Player" type="StaticBody2D"]
 
 input_pickable = false
 collision_layer = 1
@@ -42,7 +41,6 @@ _sections_unfolded = [ "Pickable" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 
-position = Vector2( 11.8879, 19.9933 )
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
