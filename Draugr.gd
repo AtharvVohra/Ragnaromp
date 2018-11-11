@@ -23,10 +23,17 @@ func _process(delta):
 		global.honor += 2
 		pass
 	
-	if(isReached):
+	if(isReached(xpos)):
 		# decrease honor
 		# play people screaming sound effect
 		global.honor -= 1
 		pass
 	
+	pass
+
+func _isReached(xpos):
+	if(xpos == 0):
+		return true
+	else:
+		return false
 	pass
