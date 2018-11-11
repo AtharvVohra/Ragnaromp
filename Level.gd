@@ -14,20 +14,19 @@ func _ready():
 	print(globals.width)
 	print(globals.height)
 	
-	# Place player on the middle
-	# lanes array is a global singleton
+	# The globals.lanes array is a global singleton
+	# Place player on the middle lane
 	player_lane = 1
-	print(player_lane)
 	player.position.y = globals.lanes[player_lane]
 	player.position.x = 70
-	print(player.position.y)
 	player.show()
 	
+	# Vars for player lane changing
 	changing_lanes = false
 	steps_to_move = 30
 	
+	# Vars for spawning enemies
 	create_x = globals.width + 128
-	
 	var DraugrScene = load("res://Draugr.tscn")
 	var new_draugr = DraugrScene.instance()
 	add_child(new_draugr)
@@ -79,6 +78,9 @@ func _physics_process(delta):
 				player.position.y = globals.lanes[target_lane]
 				player_lane = target_lane
 				changing_lanes = false
+	
+	# Spawn enemies based on patterns
+	
 				
 	print(get_node("gametimer").get_time_left())
 
