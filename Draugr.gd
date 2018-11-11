@@ -30,6 +30,10 @@ func _physics_process(delta):
 		get_node("CollisionShape2D").disabled = true
 		globals.playerHonor += 2000
 		updateHonor()
+		if(randi()%2 == 1):
+			$HonorGain1.play()
+		else:
+			$HonorGain2.play()
 		isHit = false
 		
 	

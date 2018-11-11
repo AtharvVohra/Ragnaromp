@@ -50,6 +50,8 @@ func _ready():
 	
 	get_node("Honor").set_text(String(globals.playerHonor))
 	
+	$GameStartSound.play()
+	
 	get_node("gametimer").start()
 	
 func _physics_process(delta):
@@ -116,6 +118,9 @@ func _physics_process(delta):
 			can_spawn = true
 				
 	print(get_node("gametimer").get_time_left())
+	
+	if($gametimer.get_time_left() == 15):
+		$Timeup.play()
 
 func _on_gametimer_timeout():
 	var t = Timer.new()
