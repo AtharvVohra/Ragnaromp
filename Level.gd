@@ -33,6 +33,7 @@ func _ready():
 	add_child(new_draugr)
 	new_draugr.position.x = create_x
 	#get_node("/root/Draugr.tscn").call_deferred("add_child", new_draugr)
+	get_node("Honor").set_text(String(globals.playerHonor))
 	
 	get_node("gametimer").start()
 	

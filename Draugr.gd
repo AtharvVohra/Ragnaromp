@@ -34,7 +34,7 @@ func _physics_process(delta):
 	if(isReached()):
 		# decrease honor
 		# play people screaming sound effect
-		globals.playerHonor -= 1000
+		globals.playerHonor -= 33000
 		
 		# delete the instance
 		queue_free()
