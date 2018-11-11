@@ -27,18 +27,22 @@ func _physics_process(delta):
 		# play splat sound effect
 		get_node("Sprite").set_texture(bloodtex)
 		get_node("CollisionShape2D").disabled = true
-		globals.playerHonor += 1000
-		get_node("../Honor").set_text(String(globals.playerHonor))
+		globals.playerHonor += 2000
+		updateHonor()
+		isHit = false
 		
 	
-	if(isReached()):
+	if(isReached() && !get_node("CollisionShape2D").disabled):
 		# decrease honor
 		# play people screaming sound effect
-		globals.playerHonor -= 33000
-		
+		globals.playerHonor -= 1000
+		updateHonor()
 		# delete the instance
 		queue_free()
 		print("Draugr escaped!")
 
 func isReached():
 	return position.x <= -get_node("Sprite").texture.get_width()
+	
+func updateHonor():
+	get_node("../Honor").set_text(String(globals.playerHonor))
