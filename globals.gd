@@ -12,6 +12,7 @@ var lanes = [170, 270, 370]
 
 const DRAUGR = 0	# Used for stitches (spawning enemies)
 const GIANT  = 1
+# The Quilt creation is in Main.gd
 
 #func _ready():
 #	pass

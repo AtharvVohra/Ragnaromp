@@ -10,6 +10,8 @@ var delta_y_per_step
 
 var create_x
 
+onready var quiltref = get_parent()
+
 func _ready():
 	print(globals.width)
 	print(globals.height)
@@ -24,7 +26,7 @@ func _ready():
 	# Vars for player lane changing
 	changing_lanes = false
 	steps_to_move = 30
-	
+		
 	# Vars for spawning enemies
 	create_x = globals.width + 128
 	var DraugrScene = load("res://Draugr.tscn")
@@ -80,7 +82,7 @@ func _physics_process(delta):
 				changing_lanes = false
 	
 	# Spawn enemies based on patterns
-	
+	#var pattern = 
 				
 	print(get_node("gametimer").get_time_left())
 
