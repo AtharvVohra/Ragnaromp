@@ -1,4 +1,4 @@
-extends Node
+extends KinematicBody2D
 
 # class member variables go here, for example:
 var lane

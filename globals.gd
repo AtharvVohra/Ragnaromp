@@ -8,7 +8,7 @@ onready var height = get_viewport().size.y
 # ice giants add 4 honor
 var playerHonor = 0
 var highScoreHonor = 0
-var lanes = [200, 350, 500]
+var lanes = [170, 270, 370]
 
 #func _ready():
 #	pass

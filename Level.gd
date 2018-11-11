@@ -8,6 +8,8 @@ var delta_y
 var steps_to_move
 var delta_y_per_step
 
+var create_x
+
 func _ready():
 	print(globals.width)
 	print(globals.height)
@@ -24,7 +26,17 @@ func _ready():
 	changing_lanes = false
 	steps_to_move = 30
 	
-func _process(delta):
+	create_x = globals.width + 128
+	
+	var DraugrScene = load("res://Draugr.tscn")
+	var new_draugr = DraugrScene.instance()
+	add_child(new_draugr)
+	new_draugr.position.x = create_x
+	#get_node("/root/Draugr.tscn").call_deferred("add_child", new_draugr)
+	
+	get_node("gametimer").start()
+	
+func _physics_process(delta):
 	# Input
 	if (!changing_lanes and Input.is_action_just_pressed('ui_up')):
 		if (player_lane > 0):
@@ -66,6 +78,8 @@ func _process(delta):
 				player.position.y = globals.lanes[target_lane]
 				player_lane = target_lane
 				changing_lanes = false
+				
+	print(get_node("gametimer").get_time_left())
 
 #func _physics_process(delta):
 #	pass
