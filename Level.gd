@@ -20,6 +20,7 @@ var last_enemy
 var can_spawn = true
 
 var thrown_hammer
+var hammer
 
 func _ready():
 	print(globals.width)
@@ -53,10 +54,15 @@ func _physics_process(delta):
 	if (!thrown_hammer && Input.is_action_just_pressed("ui_select")):
 		thrown_hammer = true
 		print("throw hammer")
-		var new_hammer = HammerScene.instance()
-		add_child(new_hammer)
-		new_hammer.position.x = player.position.x + 39
-		new_hammer.position.y = player.position.y
+		hammer = HammerScene.instance()
+		add_child(hammer)
+		hammer.position.x = player.position.x + hammer.sprwidth/2
+		hammer.position.y = player.position.y
+		
+	if (thrown_hammer):
+		if (hammer.hammer_back):
+			thrown_hammer = false
+			hammer.queue_free()
 
 	# Player lane changing
 	if (!changing_lanes and Input.is_action_just_pressed('ui_up')):

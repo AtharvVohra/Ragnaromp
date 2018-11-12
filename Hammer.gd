@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 # Send Mjolnir flying, then stop when it reaches
 # the end of the lane --> give it the same global movespeed
+onready var sprwidth = $Sprite.texture.get_width()
 var movespeed_flying = 30
 var movespeed_ground = 3
 var movespeed = movespeed_flying
@@ -9,6 +10,7 @@ var bloodtex = preload("res://assets/blood.png")
 var ishit = false
 var reverse = false		# Come back, Mjolnir!
 var velocity
+var hammer_back = false
 
 func _ready():
 	velocity = Vector2(1, 0)
@@ -17,7 +19,7 @@ func _physics_process(delta):
 
 	var collision = move_and_collide(velocity.normalized() * movespeed)
 	# Testing for collision/death is actually done by enemies, not Hammer
-	if collision:
+	if (!reverse && collision):
 		print("Hammer hit")
 		ishit = true
 	
@@ -27,7 +29,10 @@ func _physics_process(delta):
 		reverse = true
 		velocity = Vector2(-1, 0)
 		movespeed = movespeed_ground
-		
+	
+	if (reverse && collision):
+		print("Got Mjolnir back!")
+		hammer_back = true
 	
 	#if(ishit == true):
 		#get_node("res://Draugr.tscn/Sprite").set_texture(bloodtex)
