@@ -8,6 +8,7 @@ func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
 	get_node("Won").set_text(String(globals.playerHonor)+"/"+String(globals.endHonor))
+	$TitleTheme.play()
 	if(globals.playerHonor >= globals.endHonor):
 		$Won.set_text(String("THOR SAVED ASGARD THANKS TO HIS HONOR! GAME LOGIC!"))
 

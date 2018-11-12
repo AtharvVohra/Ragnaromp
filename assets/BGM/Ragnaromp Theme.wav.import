@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Ragnaromp Theme.wav-769e0136396b0b71209ccf46f9b985d2.sample"
+
+[deps]
+
+source_file="res://assets/BGM/Ragnaromp Theme.wav"
+dest_files=[ "res://.import/Ragnaromp Theme.wav-769e0136396b0b71209ccf46f9b985d2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

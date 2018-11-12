@@ -25,6 +25,7 @@ var hammer
 var movespeed
 
 func _ready():
+	$InGameBGM.play()
 	print(globals.width)
 	print(globals.height)
 	
@@ -83,6 +84,7 @@ func _physics_process(delta):
 		get_node("Player/hammerless").visible = true
 		get_node("Player/Sprite").visible = false
 		get_node("Player/hammerlessanimation").play("HAMMERLESS")
+		$HammerYes.visible = false
 		print("throw hammer")
 		hammer = HammerScene.instance()
 		add_child(hammer)
@@ -95,6 +97,7 @@ func _physics_process(delta):
 			thrown_hammer = false
 			get_node("Player/hammerless").visible = false
 			get_node("Player/Sprite").visible = true
+			$HammerYes.visible = true
 			hammer.queue_free()
 
 	# Player lane changing
