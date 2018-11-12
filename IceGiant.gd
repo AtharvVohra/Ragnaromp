@@ -8,6 +8,7 @@ var bloodtex = preload("res://assets/blood.png")
 var id = globals.GIANT
 var killedScore = 60
 var deathScore = 30
+var die = false
 
 func _ready():
 	# randomizes draugr lane
@@ -17,6 +18,11 @@ func _ready():
 	$Blood.hide()
 	
 func _physics_process(delta):
+	
+	if (die):
+		if (position.x <= -$Sprite.texture.get_width()*10):
+			queue_free()
+
 	
 	#position.y = globals.lanes[lane]
 	deathScore = 30 + ((globals.difficulty-1) * 10)
@@ -47,7 +53,7 @@ func _physics_process(delta):
 			$HonorGain2.play()
 		isHit = false
 	
-	if(isReached() && !get_node("CollisionShape2D").disabled):
+	if(!die && isReached() && !get_node("CollisionShape2D").disabled):
 		# decrease honor
 		# play people screaming sound effect
 		globals.playerHonor -= deathScore
@@ -58,11 +64,12 @@ func _physics_process(delta):
 		else:
 			$HonorLost2.play()
 		# delete the instance
-		queue_free()
+		#queue_free()
 		print("Giant escaped!")
+		die = true
 
 func isReached():
-	return position.x <= -get_node("Sprite").texture.get_width()
+	return position.x <= 0
 	
 func updateHonor():
 	get_node("../Honor").set_text(String(globals.playerHonor))

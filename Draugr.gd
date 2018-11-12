@@ -8,6 +8,7 @@ var bloodtex = preload("res://assets/blood.png")
 var id = globals.DRAUGR
 var killedScore = 20
 var deathScore = 10
+var die = false
 
 func _ready():
 	# randomizes draugr lane
@@ -17,6 +18,10 @@ func _ready():
 	$Blood.hide()
 	
 func _physics_process(delta):
+	
+	if (die):
+		if (position.x <= -$Sprite.texture.get_width()*10):
+			queue_free()
 	
 	#position.y = globals.lanes[lane]
 	deathScore = 10 + ((globals.difficulty-1) * 5)
@@ -52,7 +57,7 @@ func _physics_process(delta):
 		isHit = false
 		
 	
-	if(isReached() && !get_node("CollisionShape2D").disabled):
+	if(!die && isReached() && !get_node("CollisionShape2D").disabled):
 		# decrease honor
 		# play people screaming sound effect
 		globals.playerHonor -= deathScore
@@ -70,13 +75,14 @@ func _physics_process(delta):
 			$HonorLost5.play()
 		else:
 			$HeavyBreathing.play()
-			
-		# delete the instance
-		queue_free()
+		
 		print("Draugr escaped!")
+		die = true
+		# delete the instance
+		#queue_free()
 
 func isReached():
-	return position.x <= -get_node("Sprite").texture.get_width()
+	return position.x <= 0
 	
 func updateHonor():
 	get_node("../Honor").set_text(String(globals.playerHonor))
