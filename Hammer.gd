@@ -11,6 +11,7 @@ var ishit = false
 var reverse = false		# Come back, Mjolnir!
 var velocity
 var hammer_back = false
+var id = globals.HAMMER
 
 func _ready():
 	velocity = Vector2(1, 0)

@@ -5,6 +5,7 @@ var lane = 0
 var isHit
 var movespeed = 3
 var bloodtex = preload("res://assets/blood.png")
+var id = globals.GIANT
 
 func _ready():
 	# randomizes draugr lane
@@ -21,7 +22,8 @@ func _physics_process(delta):
 	var velocity = Vector2(-1, 0)
 	var collisioninfo = move_and_collide(velocity.normalized() * movespeed)
 	if collisioninfo:
-		isHit = true
+		if (collisioninfo.collider.id == globals.PLAYER or collisioninfo.collider.id == globals.HAMMER):
+			isHit = true
 		
 	if(isHit):
 		# change sprite and remove collision box

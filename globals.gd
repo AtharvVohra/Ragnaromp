@@ -12,6 +12,8 @@ var lanes = [240, 360, 480]
 
 const DRAUGR = 0	# Used for stitches (spawning enemies)
 const GIANT  = 1
+const PLAYER = 2
+const HAMMER = 3
 # The Quilt creation is in Main.gd
 
 #func _ready():
