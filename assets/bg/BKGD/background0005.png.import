@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/background 14 frames.png-f88ec69cc7b32c0ba85c0af89699859e.stex"
+path="res://.import/background0005.png-4cd4ca2d7477f45b14230bf512fdc377.stex"
 
 [deps]
 
-source_file="res://assets/bg/background 14 frames.png"
-dest_files=[ "res://.import/background 14 frames.png-f88ec69cc7b32c0ba85c0af89699859e.stex" ]
+source_file="res://assets/bg/BKGD/background0005.png"
+dest_files=[ "res://.import/background0005.png-4cd4ca2d7477f45b14230bf512fdc377.stex" ]
 
 [params]
 
