@@ -6,6 +6,8 @@ var isHit
 var movespeed = globals.movespeed
 var bloodtex = preload("res://assets/blood.png")
 var id = globals.GIANT
+var killedScore = 60
+var deathScore = 30
 
 func _ready():
 	# randomizes draugr lane
@@ -17,6 +19,7 @@ func _ready():
 func _physics_process(delta):
 	
 	#position.y = globals.lanes[lane]
+	deathScore = 30 + ((globals.difficulty-1) * 10)
 	
 	# Movement
 	var velocity = Vector2(-1, 0)
@@ -35,7 +38,7 @@ func _physics_process(delta):
 		$Sprite.hide()
 		$BloodAnim.play("DEADGIANT")
 		$Blood.show()
-		globals.playerHonor += 60
+		globals.playerHonor += killedScore
 		updateHonor()
 		var pick = randi()%2
 		if(pick == 0):
@@ -47,7 +50,7 @@ func _physics_process(delta):
 	if(isReached() && !get_node("CollisionShape2D").disabled):
 		# decrease honor
 		# play people screaming sound effect
-		globals.playerHonor -= 30
+		globals.playerHonor -= deathScore
 		updateHonor()
 		var pick = randi()%2
 		if(pick == 0):

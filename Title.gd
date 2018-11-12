@@ -10,7 +10,7 @@ func _ready():
 	get_node("Won").set_text(String(globals.playerHonor)+"/"+String(globals.endHonor))
 	$TitleTheme.play()
 	if(globals.playerHonor >= globals.endHonor):
-		$Won.set_text(String("THOR SAVED ASGARD THANKS TO HIS HONOR! GAME LOGIC!"))
+		$WonReal.set_text(String("THOR SAVED ASGARD THANKS TO HIS HONOR! GAME LOGIC!"))
 
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.

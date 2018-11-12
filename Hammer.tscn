@@ -55,7 +55,7 @@ shape = SubResource( 1 )
 [node name="HammerReturn" type="AudioStreamPlayer" parent="." index="2"]
 
 stream = ExtResource( 3 )
-volume_db = 20.0
+volume_db = 5.0
 pitch_scale = 1.0
 autoplay = false
 mix_target = 0
