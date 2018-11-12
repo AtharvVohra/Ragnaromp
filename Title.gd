@@ -1,4 +1,4 @@
-extends VBoxContainer
+extends Control
 
 # class member variables go here, for example:
 # var a = 2
@@ -7,8 +7,7 @@ extends VBoxContainer
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
-	if globals.playerHonor == 200000:
-		get_node("Won").visible = true
+	get_node("Won").set_text(String(globals.playerHonor)+"/200000")
 
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.
@@ -16,9 +15,5 @@ func _ready():
 #	pass
 
 
-func _on_StartGame_pressed():
+func _on_Button_pressed():
 	get_tree().change_scene("res://Level.tscn")
-
-
-func _on_Upgrades_pressed():
-	pass # replace with function body
