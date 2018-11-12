@@ -6,8 +6,8 @@
 [sub_resource type="CapsuleShape2D" id=1]
 
 custom_solver_bias = 0.0
-radius = 45.0
-height = 30.0
+radius = 43.0
+height = 8.0
 
 [sub_resource type="Animation" id=2]
 
@@ -42,7 +42,7 @@ _sections_unfolded = [ "Pickable" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 
-position = Vector2( 11.8879, 19.9933 )
+position = Vector2( 10.8879, 7.9933 )
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
@@ -58,6 +58,7 @@ _sections_unfolded = [ "Playback Options" ]
 
 [node name="Sprite" type="Sprite" parent="." index="2"]
 
+position = Vector2( 0.540359, -24.3162 )
 texture = ExtResource( 2 )
 hframes = 7
 frame = 2
