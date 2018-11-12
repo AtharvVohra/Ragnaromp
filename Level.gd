@@ -35,7 +35,6 @@ func _ready():
 	player.position.x = 175
 	player.show()
 	
-	
 	# Vars for player lane changing
 	changing_lanes = false
 	movespeed = globals.movespeed
@@ -44,7 +43,23 @@ func _ready():
 	create_patterns()
 	
 	get_node("Honor").set_text(String(globals.playerHonor))
-	
+
+	if (globals.playerHonor > globals.endHonor): # 15000
+		# WIN THE GAME
+		pass
+	elif (globals.playerHonor > 11250):
+		globals.difficulty = 5
+		globals.movespeed = 1 + (globals.difficulty * 2)
+	elif (globals.playerHonor > 7250):
+		globals.difficulty = 4
+		globals.movespeed = 1 + (globals.difficulty * 2)
+	elif (globals.playerHonor > 4250):
+		globals.difficulty = 3
+		globals.movespeed = 1 + (globals.difficulty * 2)
+	elif (globals.playerHonor > 1500):
+		globals.difficulty = 2
+		globals.movespeed = 1 + (globals.difficulty * 2)
+
 	$GameStartSound.play()
 	$FGAnim.play("FGANIM")
 	
@@ -54,6 +69,9 @@ func _ready():
 	$time.set_text("60")
 	
 func _physics_process(delta):
+	
+	#var pbs = (1 + (0.2 * (globals.difficulty-1)))
+	#Player/AnimationPlayer.playback_speed = pbs
 	
 	$time.set_text(String(int($gametimer.get_time_left())))
 	if($ThorFootsteps.is_playing() == false):

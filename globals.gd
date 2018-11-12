@@ -10,9 +10,11 @@ var playerHonor = 0
 var highScoreHonor = 0
 var lanes = [240, 360, 480]
 
-var movespeed = 3
-# 5
-# 10
+# movespeed = globals.movespeed * (difficulty^2)
+var difficulty = 1 # Multiplier for movespeed
+var movespeed = 1 + (2 * difficulty)
+
+var endHonor = 15000
 
 const DRAUGR = 0	# Used for stitches (spawning enemies)
 const GIANT  = 1

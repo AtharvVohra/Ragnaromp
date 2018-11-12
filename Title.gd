@@ -7,8 +7,8 @@ extends Control
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
-	get_node("Won").set_text(String(globals.playerHonor)+"/200000")
-	if(globals.playerHonor >= 200000):
+	get_node("Won").set_text(String(globals.playerHonor)+"/"+String(globals.endHonor))
+	if(globals.playerHonor >= globals.endHonor):
 		$Won.set_text(String("THOR SAVED ASGARD THANKS TO HIS HONOR! GAME LOGIC!"))
 
 #func _process(delta):
