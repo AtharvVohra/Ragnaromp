@@ -14,12 +14,12 @@ var PatternScene = load("res://Pattern.tscn")
 var StitchScene = load("res://Stitch.tscn")
 var HammerScene = load("res://Hammer.tscn")
 
+onready var quilt = get_node("Quilt")
 var create_x = globals.width + 128
-
 var last_enemy
 var can_spawn = true
 
-onready var quilt = get_node("Quilt")
+var thrown_hammer
 
 func _ready():
 	print(globals.width)
@@ -35,47 +35,9 @@ func _ready():
 	# Vars for player lane changing
 	changing_lanes = false
 	steps_to_move = 25
-		
-	# Create patterns and add them to the Quilt
-	# Later inside _process they will be used to create enemies
-	var dbuffer = 128
-	#var fbuffer = 
-	var pattern
-	pattern = PatternScene.instance()
-	add_stitch_to_pattern(pattern, globals.DRAUGR, 0, 0)
-	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer, 1)
-	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer*2, 2)
-	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer*4, 0)
-	quilt.add_child(pattern)
-	quilt.patterns.append(pattern)
+	thrown_hammer = false
 	
-	pattern = PatternScene.instance()
-	add_stitch_to_pattern(pattern, globals.DRAUGR, 0, 0)
-	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer, 0)
-	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer*2, 0)
-	quilt.add_child(pattern)
-	quilt.patterns.append(pattern)
-	
-	pattern = PatternScene.instance()
-	add_stitch_to_pattern(pattern, globals.DRAUGR, 0, 1)
-	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer, 1)
-	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer*2, 1)
-	quilt.add_child(pattern)
-	quilt.patterns.append(pattern)
-	
-	pattern = PatternScene.instance()
-	add_stitch_to_pattern(pattern, globals.DRAUGR, 0, 2)
-	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer, 2)
-	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer*2, 2)
-	quilt.add_child(pattern)
-	quilt.patterns.append(pattern)
-	
-	pattern = PatternScene.instance()
-	add_stitch_to_pattern(pattern, globals.GIANT, 0, 2)
-	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer, 2)
-	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer*2, 2)
-	quilt.add_child(pattern)
-	quilt.patterns.append(pattern)
+	create_patterns()
 	
 	get_node("Honor").set_text(String(globals.playerHonor))
 	
@@ -88,14 +50,13 @@ func _ready():
 	
 func _physics_process(delta):
 
-	if (Input.is_action_just_pressed("ui_select")):
+	if (!thrown_hammer && Input.is_action_just_pressed("ui_select")):
+		thrown_hammer = true
 		print("throw hammer")
 		var new_hammer = HammerScene.instance()
 		add_child(new_hammer)
 		new_hammer.position.x = player.position.x + 39
 		new_hammer.position.y = player.position.y
-		# Throw Hammer
-		# create instance of Hammer
 
 	# Player lane changing
 	if (!changing_lanes and Input.is_action_just_pressed('ui_up')):
@@ -187,3 +148,47 @@ func add_stitch_to_pattern(pattern, enemy, offset, lane):
 	stitch.lane = lane
 	pattern.add_child(stitch)
 	pattern.stitches.append(stitch)
+	
+func create_patterns():
+	# Just for code readability.
+	
+	# Create patterns and add them to the Quilt
+	# Later inside _process they will be used to create enemies
+	var dbuffer = 128
+	#var fbuffer = 
+	var pattern
+	pattern = PatternScene.instance()
+	add_stitch_to_pattern(pattern, globals.DRAUGR, 0, 0)
+	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer, 1)
+	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer*2, 2)
+	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer*4, 0)
+	quilt.add_child(pattern)
+	quilt.patterns.append(pattern)
+	
+	pattern = PatternScene.instance()
+	add_stitch_to_pattern(pattern, globals.DRAUGR, 0, 0)
+	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer, 0)
+	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer*2, 0)
+	quilt.add_child(pattern)
+	quilt.patterns.append(pattern)
+	
+	pattern = PatternScene.instance()
+	add_stitch_to_pattern(pattern, globals.DRAUGR, 0, 1)
+	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer, 1)
+	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer*2, 1)
+	quilt.add_child(pattern)
+	quilt.patterns.append(pattern)
+	
+	pattern = PatternScene.instance()
+	add_stitch_to_pattern(pattern, globals.DRAUGR, 0, 2)
+	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer, 2)
+	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer*2, 2)
+	quilt.add_child(pattern)
+	quilt.patterns.append(pattern)
+	
+	pattern = PatternScene.instance()
+	add_stitch_to_pattern(pattern, globals.GIANT, 0, 2)
+	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer, 2)
+	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer*2, 2)
+	quilt.add_child(pattern)
+	quilt.patterns.append(pattern)
