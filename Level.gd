@@ -33,6 +33,7 @@ func _ready():
 	player.position.x = 175
 	player.show()
 	
+	
 	# Vars for player lane changing
 	changing_lanes = false
 	steps_to_move = 25
@@ -59,6 +60,9 @@ func _physics_process(delta):
 	if (!thrown_hammer && Input.is_action_just_pressed("ui_select")):
 		thrown_hammer = true
 		$HammerThrow.play()
+		get_node("Player/hammerless").visible = true
+		get_node("Player/Sprite").visible = false
+		get_node("Player/hammerlessanimation").play("HAMMERLESS")
 		print("throw hammer")
 		hammer = HammerScene.instance()
 		add_child(hammer)
@@ -68,6 +72,8 @@ func _physics_process(delta):
 	if (thrown_hammer):
 		if (hammer.hammer_back):
 			thrown_hammer = false
+			get_node("Player/hammerless").visible = false
+			get_node("Player/Sprite").visible = true
 			hammer.queue_free()
 
 	# Player lane changing

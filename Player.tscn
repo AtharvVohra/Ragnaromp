@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/thorsprite/thor.png" type="Texture" id=2]
+[ext_resource path="res://assets/thorsprite/hammerlessthor 7 frames.png" type="Texture" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
@@ -22,9 +23,28 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
+"times": PoolRealArray( -0.2, 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 3, 0, 1, 2, 3, 4, 5, 6 ]
+}
+
+[sub_resource type="Animation" id=3]
+
+resource_name = "HAMMERLESS"
+length = 0.6
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("hammerless:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
-"update": 0,
+"update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 6 ]
 }
 
@@ -56,12 +76,32 @@ anims/ThorWithHammer = SubResource( 2 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
 
-[node name="Sprite" type="Sprite" parent="." index="2"]
+[node name="hammerlessanimation" type="AnimationPlayer" parent="." index="2"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/HAMMERLESS = SubResource( 3 )
+blend_times = [  ]
+_sections_unfolded = [ "Playback Options" ]
+
+[node name="Sprite" type="Sprite" parent="." index="3"]
 
 position = Vector2( 0.540359, -24.3162 )
 texture = ExtResource( 2 )
 hframes = 7
-frame = 2
+frame = 4
 _sections_unfolded = [ "Animation", "Transform" ]
+
+[node name="hammerless" type="Sprite" parent="." index="4"]
+
+visible = false
+position = Vector2( 0.540359, -24.3162 )
+texture = ExtResource( 3 )
+hframes = 7
+frame = 6
+_sections_unfolded = [ "Animation", "Transform", "Visibility" ]
 
 
