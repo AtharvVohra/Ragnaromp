@@ -3,7 +3,7 @@ extends KinematicBody2D
 # class member variables go here, for example:
 var lane = 0
 var isHit
-var movespeed = 3
+var movespeed = globals.movespeed
 var bloodtex = preload("res://assets/blood.png")
 var id = globals.GIANT
 

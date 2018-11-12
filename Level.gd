@@ -22,6 +22,8 @@ var can_spawn = true
 var thrown_hammer
 var hammer
 
+var movespeed
+
 func _ready():
 	print(globals.width)
 	print(globals.height)
@@ -36,7 +38,8 @@ func _ready():
 	
 	# Vars for player lane changing
 	changing_lanes = false
-	steps_to_move = 25
+	movespeed = globals.movespeed
+	steps_to_move = 20
 	thrown_hammer = false
 	
 	create_patterns()
@@ -173,7 +176,7 @@ func create_patterns():
 	
 	# Create patterns and add them to the Quilt
 	# Later inside _process they will be used to create enemies
-	var dbuffer = 128
+	var dbuffer = 250
 	#var fbuffer = 
 	var pattern
 	

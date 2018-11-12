@@ -3,8 +3,8 @@ extends KinematicBody2D
 # Send Mjolnir flying, then stop when it reaches
 # the end of the lane --> give it the same global movespeed
 onready var sprwidth = 150
-var movespeed_flying = 30
-var movespeed_ground = 3
+var movespeed_flying = globals.movespeed*10
+var movespeed_ground = globals.movespeed
 var movespeed = movespeed_flying
 var bloodtex = preload("res://assets/blood.png")
 var ishit = false
