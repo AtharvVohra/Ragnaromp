@@ -31,8 +31,9 @@ func _physics_process(delta):
 		get_node("CollisionShape2D").disabled = true
 		$AnimationPlayer.stop()
 		$Sprite.hide()
+		$BloodAnim.play("DEADGIANT")
 		$Blood.show()
-		globals.playerHonor += 6000
+		globals.playerHonor += 60
 		updateHonor()
 		var pick = randi()%2
 		if(pick == 0):
@@ -44,7 +45,7 @@ func _physics_process(delta):
 	if(isReached() && !get_node("CollisionShape2D").disabled):
 		# decrease honor
 		# play people screaming sound effect
-		globals.playerHonor -= 3000
+		globals.playerHonor -= 30
 		updateHonor()
 		var pick = randi()%2
 		if(pick == 0):

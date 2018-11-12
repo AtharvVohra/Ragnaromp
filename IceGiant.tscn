@@ -1,8 +1,8 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://IceGiant.gd" type="Script" id=1]
 [ext_resource path="res://assets/enemysprites/giant.png" type="Texture" id=2]
-[ext_resource path="res://assets/blood.png" type="Texture" id=3]
+[ext_resource path="res://assets/enemysprites/giant death 14 frames.png" type="Texture" id=3]
 [ext_resource path="res://assets/soundfx/Honour gained 5.wav" type="AudioStream" id=4]
 [ext_resource path="res://assets/soundfx/Honour gained 6.wav" type="AudioStream" id=5]
 [ext_resource path="res://assets/soundfx/Honour Lost 1.wav" type="AudioStream" id=6]
@@ -33,6 +33,25 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6 ]
 }
 
+[sub_resource type="Animation" id=3]
+
+resource_name = "DEADGIANT"
+length = 1.3
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Blood:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 ]
+}
+
 [node name="IceGiant" type="KinematicBody2D"]
 
 input_pickable = false
@@ -46,7 +65,7 @@ script = ExtResource( 1 )
 position = Vector2( -0.59874, -17.9621 )
 texture = ExtResource( 2 )
 hframes = 7
-frame = 3
+frame = 6
 _sections_unfolded = [ "Animation", "Offset", "Z Index" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
@@ -66,10 +85,13 @@ blend_times = [  ]
 
 [node name="Blood" type="Sprite" parent="." index="3"]
 
+visible = false
 position = Vector2( 12.8226, 35.2111 )
 z_index = -1
 texture = ExtResource( 3 )
-_sections_unfolded = [ "Z Index" ]
+hframes = 14
+frame = 13
+_sections_unfolded = [ "Animation", "Z Index" ]
 
 [node name="HonorGain1" type="AudioStreamPlayer" parent="." index="4"]
 
@@ -106,5 +128,15 @@ pitch_scale = 1.0
 autoplay = false
 mix_target = 0
 bus = "Master"
+
+[node name="BloodAnim" type="AnimationPlayer" parent="." index="8"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/DEADGIANT = SubResource( 3 )
+blend_times = [  ]
 
 
