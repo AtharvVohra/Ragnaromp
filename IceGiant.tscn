@@ -52,7 +52,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 ]
 }
 
-[node name="IceGiant" type="KinematicBody2D"]
+[node name="IceGiant" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
@@ -85,12 +85,10 @@ blend_times = [  ]
 
 [node name="Blood" type="Sprite" parent="." index="3"]
 
-visible = false
-position = Vector2( 12.8226, 35.2111 )
+position = Vector2( 61.2327, -13.9624 )
 z_index = -1
 texture = ExtResource( 3 )
 hframes = 14
-frame = 13
 _sections_unfolded = [ "Animation", "Z Index" ]
 
 [node name="HonorGain1" type="AudioStreamPlayer" parent="." index="4"]
