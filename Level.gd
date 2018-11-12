@@ -78,7 +78,7 @@ func _physics_process(delta):
 			hammer.queue_free()
 
 	# Player lane changing
-	if (!changing_lanes and Input.is_action_just_pressed('ui_up')):
+	if (!changing_lanes and Input.is_action_pressed('ui_up')):
 		if (player_lane > 0):
 			target_lane = player_lane - 1
 			delta_y = globals.lanes[target_lane] - globals.lanes[player_lane]
@@ -88,7 +88,7 @@ func _physics_process(delta):
 			#print(target_lane)
 			#print(delta_y)
 			#print(delta_y_per_step)
-	if (!changing_lanes and Input.is_action_just_pressed('ui_down')):
+	if (!changing_lanes and Input.is_action_pressed('ui_down')):
 		if (player_lane < 2):
 			target_lane = player_lane + 1
 			delta_y = globals.lanes[target_lane] - globals.lanes[player_lane]
