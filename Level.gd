@@ -48,8 +48,11 @@ func _ready():
 	$BG.play("default")
 	
 	get_node("gametimer").start()
+	$time.set_text("60")
 	
 func _physics_process(delta):
+	
+	$time.set_text(String(int($gametimer.get_time_left())))
 
 	if (!thrown_hammer && Input.is_action_just_pressed("ui_select")):
 		thrown_hammer = true

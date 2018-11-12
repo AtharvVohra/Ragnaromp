@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 24.9536, 40 )
+extents = Vector2( 34, 40 )
 
 [node name="Hammer" type="KinematicBody2D"]
 
@@ -18,13 +18,14 @@ script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
-scale = Vector2( 0.75, 0.75 )
+scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 2 )
-_sections_unfolded = [ "Animation", "Offset", "Pause", "Transform" ]
+_sections_unfolded = [ "Animation", "Offset", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
+position = Vector2( 1.64426, -0.0489731 )
+scale = Vector2( 0.759268, 0.893698 )
 shape = SubResource( 1 )
-_sections_unfolded = [ "Transform", "Z Index" ]
 
 
