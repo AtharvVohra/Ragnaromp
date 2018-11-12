@@ -89,10 +89,13 @@ func _ready():
 func _physics_process(delta):
 
 	if (Input.is_action_just_pressed("ui_select")):
+		print("throw hammer")
 		var new_hammer = HammerScene.instance()
+		add_child(new_hammer)
+		new_hammer.position.x = player.position.x + 39
+		new_hammer.position.y = player.position.y
 		# Throw Hammer
 		# create instance of Hammer
-		
 
 	# Player lane changing
 	if (!changing_lanes and Input.is_action_just_pressed('ui_up')):
@@ -101,36 +104,36 @@ func _physics_process(delta):
 			delta_y = globals.lanes[target_lane] - globals.lanes[player_lane]
 			delta_y_per_step = delta_y / steps_to_move
 			changing_lanes = true
-			print("Changing lanes to ")
-			print(target_lane)
-			print(delta_y)
-			print(delta_y_per_step)
+			#print("Changing lanes to ")
+			#print(target_lane)
+			#print(delta_y)
+			#print(delta_y_per_step)
 	if (!changing_lanes and Input.is_action_just_pressed('ui_down')):
 		if (player_lane < 2):
 			target_lane = player_lane + 1
 			delta_y = globals.lanes[target_lane] - globals.lanes[player_lane]
 			delta_y_per_step = delta_y / steps_to_move
 			changing_lanes = true
-			print("Changing lanes to ")
-			print(target_lane)
-			print(delta_y)
-			print(delta_y_per_step)
+			#print("Changing lanes to ")
+			#print(target_lane)
+			#print(delta_y)
+			#print(delta_y_per_step)
 	# Set objects' coords to their lane
 	#player.position.y = globals.lanes[player_lane]
 	if changing_lanes:
 		player.position.y += delta_y_per_step
-		print(player.position.y)
+		#print(player.position.y)
 		if (delta_y < 0):
 			# We're moving up
 			if (player.position.y <= globals.lanes[target_lane]):
-				print("Finished changing lanes")
+				#print("Finished changing lanes")
 				player.position.y = globals.lanes[target_lane]
 				player_lane = target_lane
 				changing_lanes = false
 		if (delta_y > 0):
 			# We're moving down
 			if (player.position.y >= globals.lanes[target_lane]):
-				print("Finished changing lanes")
+				#print("Finished changing lanes")
 				player.position.y = globals.lanes[target_lane]
 				player_lane = target_lane
 				changing_lanes = false
@@ -158,7 +161,7 @@ func _physics_process(delta):
 		if (last_enemy.position.x < globals.width):
 			can_spawn = true
 				
-	print(get_node("gametimer").get_time_left())
+	#print(get_node("gametimer").get_time_left())
 	
 	if($gametimer.get_time_left() == 15):
 		$Timeup.play()
