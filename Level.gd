@@ -87,6 +87,10 @@ func _ready():
 	
 func _physics_process(delta):
 
+	#if (Input.is_action_just_pressed("ui_select"):
+		# Throw Hammer
+		# create instance of Hammer
+
 	# Player lane changing
 	if (!changing_lanes and Input.is_action_just_pressed('ui_up')):
 		if (player_lane > 0):
