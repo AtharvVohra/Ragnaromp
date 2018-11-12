@@ -27,7 +27,7 @@ use_filter = true
 font_data = ExtResource( 2 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="TitleScreen" type="Control" index="0"]
+[node name="TitleScreen" type="Control"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -138,15 +138,14 @@ _sections_unfolded = [ "Anchor", "Margin", "Rect" ]
 
 [node name="Won" type="Label" parent="." index="2"]
 
-visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 450.0
-margin_top = 450.0
-margin_right = 60.0
-margin_bottom = 14.0
+margin_left = 14.0
+margin_top = 470.0
+margin_right = 918.0
+margin_bottom = 521.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -155,7 +154,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 1, 0.796875, 0, 1 )
-text = "THOR'S HONOR SAVED ASGARD!"
+text = "THOR NEEDS MORE HONOR TO SAVE ASGARD!"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
