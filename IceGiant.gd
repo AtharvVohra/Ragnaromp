@@ -34,12 +34,12 @@ func _physics_process(delta):
 		$Blood.show()
 		globals.playerHonor += 6000
 		updateHonor()
+		isHit = false
 		#if(randi()%2 == 1):
 			#$HonorGain1.play()
 		#else:
 			#$HonorGain2.play()
 		#isHit = false
-		
 	
 	if(isReached() && !get_node("CollisionShape2D").disabled):
 		# decrease honor

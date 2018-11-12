@@ -8,7 +8,7 @@
 
 custom_solver_bias = 0.0
 radius = 18.5934
-height = 81.7808
+height = 26.7154
 
 [sub_resource type="Animation" id=2]
 
@@ -39,6 +39,7 @@ script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
+position = Vector2( -0.59874, -17.9621 )
 texture = ExtResource( 2 )
 hframes = 7
 frame = 3
@@ -46,7 +47,7 @@ _sections_unfolded = [ "Animation", "Offset", "Z Index" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
-position = Vector2( 16.1721, 11.7615 )
+position = Vector2( 15.1721, 22.6272 )
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
@@ -61,7 +62,7 @@ blend_times = [  ]
 
 [node name="Blood" type="Sprite" parent="." index="3"]
 
-position = Vector2( 11.0264, 68.7403 )
+position = Vector2( 12.8226, 35.2111 )
 z_index = -1
 texture = ExtResource( 3 )
 _sections_unfolded = [ "Z Index" ]

@@ -9,6 +9,7 @@ var steps_to_move
 var delta_y_per_step
 
 var DraugrScene = load("res://Draugr.tscn")
+var GiantScene = load("res://IceGiant.tscn")
 var PatternScene = load("res://Pattern.tscn")
 var StitchScene = load("res://Stitch.tscn")
 
@@ -69,7 +70,7 @@ func _ready():
 	quilt.patterns.append(pattern)
 	
 	pattern = PatternScene.instance()
-	add_stitch_to_pattern(pattern, globals.DRAUGR, 0, 2)
+	add_stitch_to_pattern(pattern, globals.GIANT, 0, 2)
 	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer, 2)
 	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer*2, 2)
 	quilt.add_child(pattern)
@@ -135,11 +136,13 @@ func _physics_process(delta):
 			var new_enemy
 			if (stitch.enemy == globals.DRAUGR):
 				new_enemy = DraugrScene.instance()
-				add_child(new_enemy)
-				new_enemy.position.x = create_x + stitch.xoffset
-				new_enemy.lane = stitch.lane
-				new_enemy.position.y = globals.lanes[new_enemy.lane]
-				# Get the coordinate of the last 
+			elif (stitch.enemy == globals.GIANT):
+				new_enemy = GiantScene.instance()
+			add_child(new_enemy)
+			new_enemy.position.x = create_x + stitch.xoffset
+			new_enemy.lane = stitch.lane
+			new_enemy.position.y = globals.lanes[new_enemy.lane]
+			# Get the coordinate of the last 
 			if (stitch == pattern.stitches[pattern.stitches.size()-1]):
 				last_enemy = new_enemy
 		can_spawn = false
