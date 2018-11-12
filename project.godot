@@ -12,7 +12,8 @@ config_version=3
 
 config/name="Ragnaromp"
 run/main_scene="res://Main.tscn"
-config/icon="res://icon.png"
+boot_splash/image="res://assets/titlescreen.png"
+config/icon="res://assets/thor-icon.png"
 
 [autoload]
 
