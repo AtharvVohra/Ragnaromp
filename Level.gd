@@ -78,10 +78,12 @@ func _ready():
 	get_node("Honor").set_text(String(globals.playerHonor))
 	
 	$GameStartSound.play()
+	$FGAnim.play("FGANIM")
 	
 	get_node("gametimer").start()
 	
 func _physics_process(delta):
+
 
 	# Player lane changing
 	if (!changing_lanes and Input.is_action_just_pressed('ui_up')):
