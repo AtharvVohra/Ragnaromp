@@ -12,6 +12,7 @@ var DraugrScene = load("res://Draugr.tscn")
 var GiantScene = load("res://IceGiant.tscn")
 var PatternScene = load("res://Pattern.tscn")
 var StitchScene = load("res://Stitch.tscn")
+var HammerScene = load("res://Hammer.tscn")
 
 var create_x = globals.width + 128
 
@@ -87,9 +88,11 @@ func _ready():
 	
 func _physics_process(delta):
 
-	#if (Input.is_action_just_pressed("ui_select"):
+	if (Input.is_action_just_pressed("ui_select")):
+		var new_hammer = HammerScene.instance()
 		# Throw Hammer
 		# create instance of Hammer
+		
 
 	# Player lane changing
 	if (!changing_lanes and Input.is_action_just_pressed('ui_up')):

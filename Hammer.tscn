@@ -8,7 +8,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 34, 40 )
 
-[node name="Hammer" type="KinematicBody2D"]
+[node name="Hammer" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
@@ -19,7 +19,7 @@ script = ExtResource( 1 )
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
 texture = ExtResource( 2 )
-_sections_unfolded = [ "Offset", "Transform" ]
+_sections_unfolded = [ "Animation", "Offset", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
