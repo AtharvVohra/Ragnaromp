@@ -45,6 +45,7 @@ func _physics_process(delta):
 		$Blood.show()
 		globals.playerHonor += killedScore
 		updateHonor()
+		randomize()
 		var pick = randi()%4
 		if(pick == 0):
 			$HonorGain1.play()
@@ -62,6 +63,7 @@ func _physics_process(delta):
 		# play people screaming sound effect
 		globals.playerHonor -= deathScore
 		updateHonor()
+		randomize()
 		var pick = randi()%6
 		if(pick == 0):
 			$HonorLost1.play()
