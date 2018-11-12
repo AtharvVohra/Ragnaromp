@@ -67,6 +67,7 @@ func _physics_process(delta):
 		hammer = HammerScene.instance()
 		add_child(hammer)
 		hammer.position.x = player.position.x + hammer.sprwidth/2
+		#hammer.position.x = player.position.x + 150
 		hammer.position.y = player.position.y
 		
 	if (thrown_hammer):
@@ -175,35 +176,36 @@ func create_patterns():
 	var dbuffer = 128
 	#var fbuffer = 
 	var pattern
-	pattern = PatternScene.instance()
-	add_stitch_to_pattern(pattern, globals.DRAUGR, 0, 0)
-	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer, 1)
-	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer*2, 2)
-	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer*4, 0)
-	quilt.add_child(pattern)
-	quilt.patterns.append(pattern)
 	
-	pattern = PatternScene.instance()
-	add_stitch_to_pattern(pattern, globals.DRAUGR, 0, 0)
-	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer, 0)
-	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer*2, 0)
-	quilt.add_child(pattern)
-	quilt.patterns.append(pattern)
-	
-	pattern = PatternScene.instance()
-	add_stitch_to_pattern(pattern, globals.DRAUGR, 0, 1)
-	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer, 1)
-	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer*2, 1)
-	quilt.add_child(pattern)
-	quilt.patterns.append(pattern)
-	
-	pattern = PatternScene.instance()
-	add_stitch_to_pattern(pattern, globals.DRAUGR, 0, 2)
-	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer, 2)
-	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer*2, 2)
-	quilt.add_child(pattern)
-	quilt.patterns.append(pattern)
-	
+#	pattern = PatternScene.instance()
+#	add_stitch_to_pattern(pattern, globals.DRAUGR, 0, 0)
+#	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer, 1)
+#	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer*2, 2)
+#	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer*4, 0)
+#	quilt.add_child(pattern)
+#	quilt.patterns.append(pattern)
+#
+#	pattern = PatternScene.instance()
+#	add_stitch_to_pattern(pattern, globals.DRAUGR, 0, 0)
+#	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer, 0)
+#	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer*2, 0)
+#	quilt.add_child(pattern)
+#	quilt.patterns.append(pattern)
+#
+#	pattern = PatternScene.instance()
+#	add_stitch_to_pattern(pattern, globals.DRAUGR, 0, 1)
+#	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer, 1)
+#	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer*2, 1)
+#	quilt.add_child(pattern)
+#	quilt.patterns.append(pattern)
+#
+#	pattern = PatternScene.instance()
+#	add_stitch_to_pattern(pattern, globals.DRAUGR, 0, 2)
+#	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer, 2)
+#	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer*2, 2)
+#	quilt.add_child(pattern)
+#	quilt.patterns.append(pattern)
+#
 	pattern = PatternScene.instance()
 	add_stitch_to_pattern(pattern, globals.GIANT, 0, 2)
 	add_stitch_to_pattern(pattern, globals.DRAUGR, dbuffer, 2)

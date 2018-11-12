@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 # Send Mjolnir flying, then stop when it reaches
 # the end of the lane --> give it the same global movespeed
-onready var sprwidth = $Sprite.texture.get_width()
+onready var sprwidth = 150
 var movespeed_flying = 30
 var movespeed_ground = 3
 var movespeed = movespeed_flying
@@ -14,6 +14,9 @@ var hammer_back = false
 
 func _ready():
 	velocity = Vector2(1, 0)
+	$AnimationPlayer.play("Spin")
+	$Dropped.hide()
+	print(sprwidth)
 
 func _physics_process(delta):
 
@@ -23,10 +26,15 @@ func _physics_process(delta):
 		print("Hammer hit")
 		ishit = true
 	
-	if (!reverse && (position.x >= globals.width-$Sprite.texture.get_width()/2)):
+	if (!reverse && (position.x >= globals.width)):
 		# The hammer is at the end of the lane.
 		print("Come back, Mjolnir!")
 		$HammerReached.play()
+
+		$AnimationPlayer.stop()
+		$Sprite.hide()
+		$Dropped.show()
+		
 		reverse = true
 		velocity = Vector2(-1, 0)
 		movespeed = movespeed_ground
