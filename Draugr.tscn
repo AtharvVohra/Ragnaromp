@@ -1,10 +1,18 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Draugr.gd" type="Script" id=1]
 [ext_resource path="res://assets/enemysprites/draugr.png" type="Texture" id=2]
-[ext_resource path="res://assets/soundfx/Honour Gained (1).wav" type="AudioStream" id=3]
-[ext_resource path="res://assets/soundfx/Honour Gained (2).wav" type="AudioStream" id=4]
-[ext_resource path="res://assets/blood.png" type="Texture" id=5]
+[ext_resource path="res://assets/soundfx/Honour gained 1.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/soundfx/Honour gained 2.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/soundfx/Honour gained 3.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/soundfx/Honour gained 4.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/blood.png" type="Texture" id=7]
+[ext_resource path="res://assets/soundfx/Honour Lost 3.wav" type="AudioStream" id=8]
+[ext_resource path="res://assets/soundfx/Honour Lost 4.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/soundfx/Honour Lost 5.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/soundfx/Honour Lost 6.wav" type="AudioStream" id=11]
+[ext_resource path="res://assets/soundfx/Honour Lost 7.wav" type="AudioStream" id=12]
+[ext_resource path="res://assets/soundfx/Thor laboured breathing.wav" type="AudioStream" id=13]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
@@ -31,7 +39,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6 ]
 }
 
-[node name="Draugr" type="KinematicBody2D"]
+[node name="Draugr" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
@@ -80,11 +88,83 @@ autoplay = false
 mix_target = 0
 bus = "Master"
 
-[node name="Blood" type="Sprite" parent="." index="5"]
+[node name="HonorGain3" type="AudioStreamPlayer" parent="." index="5"]
+
+stream = ExtResource( 5 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="HonorGain4" type="AudioStreamPlayer" parent="." index="6"]
+
+stream = ExtResource( 6 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="Blood" type="Sprite" parent="." index="7"]
 
 position = Vector2( 6.82744, 42.4277 )
 z_index = -1
-texture = ExtResource( 5 )
+texture = ExtResource( 7 )
 _sections_unfolded = [ "Z Index" ]
+
+[node name="HonorLost1" type="AudioStreamPlayer" parent="." index="8"]
+
+stream = ExtResource( 8 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="HonorLost2" type="AudioStreamPlayer" parent="." index="9"]
+
+stream = ExtResource( 9 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="HonorLost3" type="AudioStreamPlayer" parent="." index="10"]
+
+stream = ExtResource( 10 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="HonorLost4" type="AudioStreamPlayer" parent="." index="11"]
+
+stream = ExtResource( 11 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="HonorLost5" type="AudioStreamPlayer" parent="." index="12"]
+
+stream = ExtResource( 12 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="HeavyBreathing" type="AudioStreamPlayer" parent="." index="13"]
+
+stream = ExtResource( 13 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
 
 

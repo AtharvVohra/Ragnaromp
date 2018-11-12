@@ -53,9 +53,12 @@ func _ready():
 func _physics_process(delta):
 	
 	$time.set_text(String(int($gametimer.get_time_left())))
+	if($ThorFootsteps.is_playing() == false):
+		$ThorFootsteps.play()
 
 	if (!thrown_hammer && Input.is_action_just_pressed("ui_select")):
 		thrown_hammer = true
+		$HammerThrow.play()
 		print("throw hammer")
 		hammer = HammerScene.instance()
 		add_child(hammer)

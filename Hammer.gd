@@ -26,11 +26,13 @@ func _physics_process(delta):
 	if (!reverse && (position.x >= globals.width-$Sprite.texture.get_width()/2)):
 		# The hammer is at the end of the lane.
 		print("Come back, Mjolnir!")
+		$HammerReached.play()
 		reverse = true
 		velocity = Vector2(-1, 0)
 		movespeed = movespeed_ground
 	
 	if (reverse && collision):
+		$HammerReturn.play()
 		print("Got Mjolnir back!")
 		hammer_back = true
 	

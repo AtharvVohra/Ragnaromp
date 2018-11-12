@@ -1,14 +1,16 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Hammer.gd" type="Script" id=1]
 [ext_resource path="res://assets/hammerhead.png" type="Texture" id=2]
+[ext_resource path="res://assets/soundfx/Mjolnir catch.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/soundfx/Mjolnir land.wav" type="AudioStream" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 34, 40 )
 
-[node name="Hammer" type="KinematicBody2D"]
+[node name="Hammer" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
@@ -27,5 +29,23 @@ _sections_unfolded = [ "Animation", "Offset", "Transform" ]
 position = Vector2( 1.64426, -0.0489731 )
 scale = Vector2( 0.759268, 0.893698 )
 shape = SubResource( 1 )
+
+[node name="HammerReturn" type="AudioStreamPlayer" parent="." index="2"]
+
+stream = ExtResource( 3 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="HammerReached" type="AudioStreamPlayer" parent="." index="3"]
+
+stream = ExtResource( 4 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
 
 

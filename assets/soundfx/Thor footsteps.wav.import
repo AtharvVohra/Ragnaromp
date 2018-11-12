@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Thor footsteps.wav-2568b02732fa31ae306e71f3b20994c7.sample"
+
+[deps]
+
+source_file="res://assets/soundfx/Thor footsteps.wav"
+dest_files=[ "res://.import/Thor footsteps.wav-2568b02732fa31ae306e71f3b20994c7.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

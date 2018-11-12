@@ -1,8 +1,12 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://IceGiant.gd" type="Script" id=1]
 [ext_resource path="res://assets/enemysprites/giant.png" type="Texture" id=2]
 [ext_resource path="res://assets/blood.png" type="Texture" id=3]
+[ext_resource path="res://assets/soundfx/Honour gained 5.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/soundfx/Honour gained 6.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/soundfx/Honour Lost 1.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/soundfx/Honour Lost 2.wav" type="AudioStream" id=7]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
@@ -66,5 +70,41 @@ position = Vector2( 12.8226, 35.2111 )
 z_index = -1
 texture = ExtResource( 3 )
 _sections_unfolded = [ "Z Index" ]
+
+[node name="HonorGain1" type="AudioStreamPlayer" parent="." index="4"]
+
+stream = ExtResource( 4 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="HonorGain2" type="AudioStreamPlayer" parent="." index="5"]
+
+stream = ExtResource( 5 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="HonorLost1" type="AudioStreamPlayer" parent="." index="6"]
+
+stream = ExtResource( 6 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="HonorLost2" type="AudioStreamPlayer" parent="." index="7"]
+
+stream = ExtResource( 7 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
 
 

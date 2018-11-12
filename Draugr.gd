@@ -34,10 +34,15 @@ func _physics_process(delta):
 		$Blood.show()
 		globals.playerHonor += 2000
 		updateHonor()
-		if(randi()%2 == 1):
+		var pick = randi()%4
+		if(pick == 0):
 			$HonorGain1.play()
-		else:
+		elif(pick == 1):
 			$HonorGain2.play()
+		elif(pick == 2):
+			$HonorGain3.play()
+		else:
+			$HonorGain4.play()
 		isHit = false
 		
 	
@@ -46,6 +51,20 @@ func _physics_process(delta):
 		# play people screaming sound effect
 		globals.playerHonor -= 1000
 		updateHonor()
+		var pick = randi()%6
+		if(pick == 0):
+			$HonorLost1.play()
+		elif(pick == 1):
+			$HonorLost2.play()
+		elif(pick == 2):
+			$HonorLost3.play()
+		elif(pick == 3):
+			$HonorLost4.play()
+		elif(pick == 4):
+			$HonorLost5.play()
+		else:
+			$HeavyBreathing.play()
+			
 		# delete the instance
 		queue_free()
 		print("Draugr escaped!")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=2]
+[gd_scene load_steps=76 format=2]
 
 [ext_resource path="res://Level.gd" type="Script" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -67,6 +67,8 @@
 [ext_resource path="res://assets/bg/BKGD/background0057.png" type="Texture" id=65]
 [ext_resource path="res://assets/bg/BKGD/background0058.png" type="Texture" id=66]
 [ext_resource path="res://assets/bg/BKGD/background0059.png" type="Texture" id=67]
+[ext_resource path="res://assets/soundfx/Thor footsteps.wav" type="AudioStream" id=68]
+[ext_resource path="res://assets/soundfx/Mjolnir throw.wav" type="AudioStream" id=69]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -305,6 +307,24 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
+
+[node name="ThorFootsteps" type="AudioStreamPlayer" parent="." index="13"]
+
+stream = ExtResource( 68 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = true
+mix_target = 0
+bus = "Master"
+
+[node name="HammerThrow" type="AudioStreamPlayer" parent="." index="14"]
+
+stream = ExtResource( 69 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
 
 [connection signal="timeout" from="gametimer" to="." method="_on_gametimer_timeout"]
 

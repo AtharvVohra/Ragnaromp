@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Honour gained 5.wav-60887b56ffbfa5479d94fc3a3e46b4f0.sample"
+
+[deps]
+
+source_file="res://assets/soundfx/Honour gained 5.wav"
+dest_files=[ "res://.import/Honour gained 5.wav-60887b56ffbfa5479d94fc3a3e46b4f0.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
