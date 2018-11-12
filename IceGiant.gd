@@ -1,34 +1,57 @@
 extends KinematicBody2D
 
 # class member variables go here, for example:
-var lane
+var lane = 0
 var isHit
-var movespeed = 20
+var movespeed = 3
+var bloodtex = preload("res://assets/blood.png")
 
 func _ready():
 	# randomizes draugr lane
-	lane = randi() % 3
-	position.y = globals.lanes[lane]
+	#lane = randi() % 3
 	isHit = false
+	$AnimationPlayer.play("GiantAnim")
+	$Blood.hide()
 	
 func _physics_process(delta):
 	
+	#position.y = globals.lanes[lane]
+	
 	# Movement
 	var velocity = Vector2(-1, 0)
-	move_and_slide(velocity.normalized() * movespeed)
-	
+	var collisioninfo = move_and_collide(velocity.normalized() * movespeed)
+	if collisioninfo:
+		isHit = true
+		
 	if(isHit):
-		# change sprite
+		# change sprite and remove collision box
 		# add honor points
 		# play splat sound effect
-		globals.honor += 4
+		get_node("Sprite").set_texture(bloodtex)
+		get_node("CollisionShape2D").disabled = true
+		$AnimationPlayer.stop()
+		$Sprite.hide()
+		$Blood.show()
+		globals.playerHonor += 6000
+		updateHonor()
+		#if(randi()%2 == 1):
+			#$HonorGain1.play()
+		#else:
+			#$HonorGain2.play()
+		#isHit = false
+		
 	
-	if(isReached(position.x)):
+	if(isReached() && !get_node("CollisionShape2D").disabled):
 		# decrease honor
 		# play people screaming sound effect
-		globals.honor -= 2
-		
+		globals.playerHonor -= 3000
+		updateHonor()
 		# delete the instance
+		queue_free()
+		print("Giant escaped!")
 
-func isReached(xpos):
-	return position.x == 0
+func isReached():
+	return position.x <= -get_node("Sprite").texture.get_width()
+	
+func updateHonor():
+	get_node("../Honor").set_text(String(globals.playerHonor))
